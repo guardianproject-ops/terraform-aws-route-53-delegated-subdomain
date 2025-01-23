@@ -1,0 +1,31 @@
+name: terraform-aws-CHANGEME
+license: GPL3
+gitlab_repo: guardianproject-ops/terraform-aws-CHANGEME
+
+description: Terraform module for ...
+
+introduction: |-
+  Use this module to ..
+
+usage: |-
+
+  ```terraform
+  module "module" {
+    source = "git::https://gitlab.com/guardianproject-ops/terraform-aws-CHANGEME?ref=main"
+    greeting = "Bonjour"
+  }
+  ```
+
+  ## Documentation
+  
+  Docs are nice!
+
+
+include:
+  - docs/terraform.md
+
+contributors:
+  - name: "Abel Luck"
+    gitlab: "abelxluck"
+    gravatar: 0f605397e0ead93a68e1be26dc26481a
+
