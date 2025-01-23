@@ -1,25 +1,29 @@
-name: terraform-aws-CHANGEME
+---
+name: terraform-aws-route-53-delegated-subdomain
 license: GPL3
-gitlab_repo: guardianproject-ops/terraform-aws-CHANGEME
+gitlab_repo: guardianproject-ops/terraform-aws-route-53-delegated-subdomain
 
-description: Terraform module for ...
+description: Terraform module for delegating a subdomain from one AWS account to another
 
 introduction: |-
-  Use this module to ..
+  When you use one AWS account to hold your Route 53 zone for your domain, but you want to control and use a subdomain
+  in a different account, use this module to delegate control of the subdomain to your workload account
 
 usage: |-
 
   ```terraform
-  module "module" {
-    source = "git::https://gitlab.com/guardianproject-ops/terraform-aws-CHANGEME?ref=main"
-    greeting = "Bonjour"
+  module "dns_zone" {
+    source      = "git::https://gitlab.com/guardianproject-ops/terraform-aws-route-53-delegated-subdomain?ref=main"
+    root_domain = "example.com"
+    subdomain   = "foobar"
+    ttl         = 3600
+    context     = module.this.context
+    providers = {
+      aws.subdomain_account   = aws
+      aws.root_domain_account = aws.domain_account
+    }
   }
   ```
-
-  ## Documentation
-  
-  Docs are nice!
-
 
 include:
   - docs/terraform.md
@@ -28,4 +32,3 @@ contributors:
   - name: "Abel Luck"
     gitlab: "abelxluck"
     gravatar: 0f605397e0ead93a68e1be26dc26481a
-

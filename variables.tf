@@ -2,9 +2,14 @@
 # REQUIRED VARIABLES #
 ######################
 
-variable "greeting" {
-  description = "The greeting"
+variable "root_domain" {
   type        = string
+  description = "The root domain to create the subdomain under. Example: example.com"
+}
+
+variable "subdomain" {
+  type        = string
+  description = "The subdomain to create. Example: foobar"
 }
 
 
@@ -12,8 +17,8 @@ variable "greeting" {
 # OPTIONAL VARIABLES #
 ######################
 
-variable "greetee" {
-  description = "The greetee"
-  type        = string
-  default     = "Engineer!"
+variable "ttl" {
+  description = "The TTL of the NS record."
+  type        = number
+  default     = 3600
 }
